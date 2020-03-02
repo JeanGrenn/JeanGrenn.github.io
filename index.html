@@ -273,7 +273,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-03-02 11:46:04" itemprop="dateModified" datetime="2020-03-02T11:46:04+08:00">2020-03-02</time>
+                <time title="修改时间：2020-03-02 12:03:00" itemprop="dateModified" datetime="2020-03-02T12:03:00+08:00">2020-03-02</time>
               </span>
 
           
@@ -316,10 +316,10 @@
 <li><p>ssh-keygen是用于生成ssh-key的工具。</p>
 </li>
 </ul>
-<h2 id="2-生成SSH-Key"><a href="#2-生成SSH-Key" class="headerlink" title="2 生成SSH-Key"></a>2 生成SSH-Key</h2><h3 id="2-0-检查是否已存在ssh-key"><a href="#2-0-检查是否已存在ssh-key" class="headerlink" title="2.0 检查是否已存在ssh-key"></a>2.0 检查是否已存在ssh-key</h3><p>终端输入<br><code>$ cd .ssh</code></p>
-<img src="https://i.loli.net/2020/03/02/cJ1xSXzIQvfqEge.png" alt="截屏2020-02-27上午10.55.38" style="zoom:50%;" />
+<h2 id="2-生成SSH-Key"><a href="#2-生成SSH-Key" class="headerlink" title="2 生成SSH-Key"></a>2 生成SSH-Key</h2><h3 id="2-0-检查是否已存在ssh-key"><a href="#2-0-检查是否已存在ssh-key" class="headerlink" title="2.0 检查是否已存在ssh-key"></a>2.0 检查是否已存在ssh-key</h3><p>终端输入<code>cd .ssh</code></p>
+<img src="https://i.loli.net/2020/03/02/cJ1xSXzIQvfqEge.png" alt="截屏2020-02-27上午10.55.38"  />
+这样就是没有
 
-<p>这样就是没有</p>
 <h3 id="2-1-默认版"><a href="#2-1-默认版" class="headerlink" title="2.1 默认版"></a>2.1 默认版</h3><p><code>$ ssh-keygen</code></p>
 <p><img src="https://i.loli.net/2020/03/02/1vd59uYDq3XQEc4.png" alt="截屏2020-02-27上午11.00.06"></p>
 <p><strong>首先，询问放哪</strong><br>用于用户身份验证的ssh-key一般放主用户目录的.ssh目录中，即按照括号内提示输入即可，没有也会默认生成。企业中或有不同。</p>
@@ -337,13 +337,13 @@
 <li>ecdsa：基于椭圆曲线，支持256、384和521位，建议521，因为即使是521位仍然很小，且具有更高的安全性。</li>
 <li>ed25519：OpenSSH中新加的，不咋被支持，不建议。</li>
 </ul>
-<p>使用-t选择算法，-b用于选择密钥大小，例如：<br><code>$ ssh-keygen -t ecdsa -b 521</code></p>
-<h4 id="2-2-2-添加注释"><a href="#2-2-2-添加注释" class="headerlink" title="2.2.2 添加注释"></a>2.2.2 添加注释</h4><p>经常看到相关博客上写-C “<a href="mailto:your_email@example.com">your_email@example.com</a>”，不能理解这个邮箱在这是干嘛的。<br>查看官方设定得知方法-C用于添加comment，所以理论上这里可以输入任意内容。一般把这个注释当名字用，而很多网站都用邮箱作用户名，猜测这就是大家都默认写邮箱的原因叭。<br>个人认为写网站名更合适一些。</p>
-<p>所以综合起来可以使用指令<br><code>$ ssh-keygen -t ecdsa -C “xxx.xxxxx.com” //注意C要大写</code><br>再查看.ssh文件夹<br><img src="https://i.loli.net/2020/03/02/T5pjNOmMI9bkYsv.png" alt="截屏2020-02-27下午12.04.33"><br>我们已经有两对密钥了</p>
+<p>使用-t选择算法，-b用于选择密钥大小，例如：<code>$ ssh-keygen -t ecdsa -b 521</code></p>
+<h4 id="2-2-2-添加注释"><a href="#2-2-2-添加注释" class="headerlink" title="2.2.2 添加注释"></a>2.2.2 添加注释</h4><p>经常看到相关博客上写-C+”<a href="mailto:your_email@example.com">your_email@example.com</a>”，不能理解这个邮箱在这是干嘛的。<br>查看官方设定得知方法-C用于添加comment，所以理论上这里可以输入任意内容。一般把这个注释当名字用，而很多网站都用邮箱作用户名，猜测这就是大家都默认写邮箱的原因叭。</p>
+<p>个人认为写网站名更合适一些。<br>所以综合起来可以使用指令<code>$ ssh-keygen -t ecdsa -C “xxx.xxxxx.com” //注意C要大写</code><br>再次查看.ssh文件夹<br><img src="https://i.loli.net/2020/03/02/T5pjNOmMI9bkYsv.png" alt="截屏2020-02-27下午12.04.33"><br>我们已经有两对密钥了</p>
 <h4 id="2-2-3-补充"><a href="#2-2-3-补充" class="headerlink" title="2.2.3 补充"></a>2.2.3 补充</h4><p>用的最多的就上面俩，使用 help语句 可查看更多功能<br><em>*-b  “位数”此选项指定密钥中的位数。管理SSH用例的法规可能要求使用特定的密钥长度。通常，对于RSA密钥，认为2048位就足够了。</em><br><em>-e  “导出”（Export）此选项允许在OpenSSH密钥文件格式和RFC 4716中记录的格式“ SSH公共密钥文件格式” 之间重新格式化现有密钥。</em><br><em>-p “更改密码短语”此选项允许使用[-P old_passphrase]和[-N new_passphrase]，更改私钥文件的密码短语[-f keyfile]。</em><br><em>-t “类型”此选项指定要创建的密钥的类型。常用的值是： - RSA为RSA密钥 - DSA为DSA密钥 - ECDSA为椭圆曲线DSA密钥</em><br><em>-i “输入”当需要ssh-keygen访问现有密钥时，此选项指定文件。</em><br><em>-f “文件”指定用于存储创建的密钥的文件的名称。</em><br><em>-N “ New”为密钥提供新的密码短语。</em><br><em>-P “ Passphrase”在读取密钥时提供（旧的）密码短语。</em><br><em>-c “注释”更改密钥文件的注释。</em><br><em>-p更改私钥文件的密码。</em><br><em>-q静默ssh-keygen。</em><br><em>-v详细模式。</em><br><em>-l “ Fingerprint”打印指定公用密钥的指纹。</em><br><em>-B “气泡声”显示密钥文件的“气泡声”（Tectia格式）指纹。</em><br><em>-F在known_hosts文件中搜索指定的主机名。</em><br><em>-R从known_hosts文件中删除属于主机名的所有键。</em><br>-y读取专用的OpenSSH格式文件，并将OpenSSH公用密钥打印到stdout。* </p>
-<h2 id="3-应用"><a href="#3-应用" class="headerlink" title="3 应用"></a>3 应用</h2><h3 id="3-1-添加至代理"><a href="#3-1-添加至代理" class="headerlink" title="3.1 添加至代理"></a>3.1 添加至代理</h3><h4 id="3-1-1-将新生成的key添加至ssh-agent中"><a href="#3-1-1-将新生成的key添加至ssh-agent中" class="headerlink" title="3.1.1 将新生成的key添加至ssh-agent中"></a>3.1.1 将新生成的key添加至ssh-agent中</h4><p><code>$ ssh-add ~/.ssh/id_ecdsa</code></p>
-<h4 id="3-1-2-将密钥添加至keychain中"><a href="#3-1-2-将密钥添加至keychain中" class="headerlink" title="3.1.2 将密钥添加至keychain中"></a>3.1.2 将密钥添加至keychain中</h4><p>MacOS内置了keychain服务及管理程序，用于管理各种密钥，当然也包括SSH-key。<br>ssh-add语句会默认将key添加至ssh-agent中，我们也可以放在keychain中，由Mac统一管理。<br><code>$ ssh-add -K ~/.ssh/id_ecdsa</code></p>
-<h3 id="3-2-添加至GitHub"><a href="#3-2-添加至GitHub" class="headerlink" title="3.2 添加至GitHub"></a>3.2 添加至GitHub</h3><ul>
+<h2 id="3-应用"><a href="#3-应用" class="headerlink" title="3 应用"></a>3 应用</h2><h3 id="3-1-添加至代理"><a href="#3-1-添加至代理" class="headerlink" title="3.1 添加至代理"></a>3.1 添加至代理</h3><h4 id="3-1-1-将密钥添加至ssh-agent"><a href="#3-1-1-将密钥添加至ssh-agent" class="headerlink" title="3.1.1 将密钥添加至ssh-agent"></a>3.1.1 将密钥添加至ssh-agent</h4><p><code>$ ssh-add ~/.ssh/id_ecdsa</code></p>
+<h4 id="3-1-2-将密钥添加至keychain"><a href="#3-1-2-将密钥添加至keychain" class="headerlink" title="3.1.2 将密钥添加至keychain"></a>3.1.2 将密钥添加至keychain</h4><p>MacOS内置了keychain服务及管理程序，用于管理各种密钥，当然也包括SSH-key。<br>ssh-add语句会默认将key添加至ssh-agent中，我们也可以放在keychain中，由Mac统一管理。<br><code>$ ssh-add -K ~/.ssh/id_ecdsa</code></p>
+<h3 id="3-2-将公钥添加至GitHub"><a href="#3-2-将公钥添加至GitHub" class="headerlink" title="3.2 将公钥添加至GitHub"></a>3.2 将公钥添加至GitHub</h3><ul>
 <li><p>获取公钥<br><code>$ cat ~/.ssh/id_ecdsa.pub</code><br>复制后，在GitHub站内个人主页的setting页面，选择SSH keys粘贴即可。</p>
 </li>
 <li><p>验证添加成功<br><code>$ ssh -T git@github.com</code><br><img src="https://i.loli.net/2020/03/02/O3aAKmcSQvpiJFT.png" alt="截屏2020-02-27下午1.09.32"><br>tada！</p>
